@@ -1,0 +1,28 @@
+#!/bin/sh
+
+NAME=$1
+
+if [ "$NAME" = "" ]; then
+	cat <<EOF
+usage: svnrepoadd reponame
+EOF
+	exit 1
+fi
+
+DIR=/data/svn/repos/$NAME
+
+svnadmin create $DIR
+
+cd /tmp
+svn checkout file://$DIR
+cd $NAME
+mkdir trunk branches tags
+mkdir trunk/html
+
+svn add *
+svn commit -m "Init."
+
+chown -R apache:apache $DIR
+
+cd /tmp
+rm -rf $NAME

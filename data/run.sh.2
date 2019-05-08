@@ -1,0 +1,12 @@
+#!/bin/sh
+
+trap_TERM() {
+	echo 'SIGTERM ACCEPTED.'
+	/etc/init.d/httpd24-httpd stop
+	echo "Stop done."
+	exit 0
+}
+
+trap 'trap_TERM' TERM
+
+/usr/sbin/httpd -DFOREGROUND
