@@ -27,5 +27,7 @@ docker exec -it svnserver svnuseradd username
 docker exec -it svnserver svnrepoadd reponame 
 ```
 
-
-
+# svn repository URL
+```
+http://hostname:8080/svn/reponame
+```
