@@ -17,7 +17,6 @@ cd /tmp
 svn checkout file://$DIR
 cd $NAME
 mkdir trunk branches tags
-mkdir trunk/html
 
 svn add *
 svn commit -m "Init."
